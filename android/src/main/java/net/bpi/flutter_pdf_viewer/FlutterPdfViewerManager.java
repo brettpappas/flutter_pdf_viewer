@@ -5,8 +5,8 @@ import android.app.Activity;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-// import com.github.barteksc.pdfviewer.PDFView;
-import com.github.mhiew.pdfviewer.PDFView;
+import com.github.barteksc.pdfviewer.PDFView;
+// import com.github.mhiew.pdfviewer.PDFView;
 import java.io.File;
 
 import io.flutter.plugin.common.MethodCall;
