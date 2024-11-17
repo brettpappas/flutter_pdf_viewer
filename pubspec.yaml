@@ -1,11 +1,11 @@
-name: nbrg_pdf_viewer_flutter
+name: flutter_pdf_viewer
 description: A flutter plugin to display PDFs. This works for Android and for iOS(Reduced Functionality).
 version: 2.1.2
-homepage: https://github.com/nbrgdevelopers41/nbrg_pdf_viewer_flutter
+homepage: https://github.com/brettpappas/flutter_pdf_viewer
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
-  flutter: ">=1.20.0"
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=1.20.0'
 
 dependencies:
   flutter:
@@ -27,10 +27,10 @@ flutter:
   plugin:
     platforms:
       android:
-        package: dev.nbrg.nbrg_pdf_viewer_flutter
-        pluginClass: NbrgPdfViewerFlutterPlugin
+        package: net.bpi.flutter_pdf_viewer
+        pluginClass: FlutterPdfViewerPlugin
       ios:
-        pluginClass: NbrgPdfViewerFlutterPlugin
+        pluginClass: FlutterPdfViewerPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

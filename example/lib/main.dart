@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:nbrg_pdf_viewer_flutter/nbrg_pdf_viewer_flutter.dart';
+import 'package:flutter_pdf_viewer/flutter_pdf_viewer.dart';
 import 'package:path_provider/path_provider.dart';
 
 void main() {
@@ -53,8 +53,7 @@ class _MyAppState extends State<MyApp> {
           child: Text("Open PDF"),
           onPressed: () => Navigator.push(
             context,
-            MaterialPageRoute(
-                builder: (context) => PDFScreen(pathPDF: pathPDF)),
+            MaterialPageRoute(builder: (context) => PDFScreen(pathPDF: pathPDF)),
           ),
         ),
       ),

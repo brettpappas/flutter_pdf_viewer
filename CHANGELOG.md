@@ -1,4 +1,4 @@
-# Changelog For [nbrg_pdf_viewer_flutter](https://pub.dev/packages/nbrg_pdf_viewer_flutter)
+# Changelog For [flutter_pdf_viewer](https://pub.dev/packages/flutter_pdf_viewer)
 
 ## 2.1.2
 - Updated the underlying PDF viewer to version 3.1.0-beta01

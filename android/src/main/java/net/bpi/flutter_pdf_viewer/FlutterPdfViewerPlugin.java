@@ -1,4 +1,4 @@
-package dev.nbrg.nbrg_pdf_viewer_flutter;
+package net.bpi.flutter_pdf_viewer;
 
 import android.app.Activity;
 import android.content.Context;
@@ -19,20 +19,20 @@ import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.PluginRegistry;
 
-public class NbrgPdfViewerFlutterPlugin implements FlutterPlugin, ActivityAware, PluginRegistry.ActivityResultListener, MethodChannel.MethodCallHandler {
+public class FlutterPdfViewerPlugin implements FlutterPlugin, ActivityAware, PluginRegistry.ActivityResultListener, MethodChannel.MethodCallHandler {
     static MethodChannel channel;
     private Activity activity;
-    private NbrgPdfViewerFlutterManager nbrgPdfViewerFlutterManager;
+    private FlutterPdfViewerManager FlutterPdfViewerManager;
     static private BinaryMessenger binaryMessenger;
 
     // Empty constructor for the Android Embedding Version 2.
-    public NbrgPdfViewerFlutterPlugin() {
+    public FlutterPdfViewerPlugin() {
     }
 
     /// This method registers the plugin with an activity.
     private void registerWithActivity(ActivityPluginBinding activityPluginBinding, BinaryMessenger messenger) {
         activity = activityPluginBinding.getActivity();
-        channel = new MethodChannel(messenger, "nbrg_pdf_viewer_flutter");
+        channel = new MethodChannel(messenger, "flutter_pdf_viewer");
         activityPluginBinding.addActivityResultListener(this);
         channel.setMethodCallHandler(this);
     }
@@ -57,28 +57,28 @@ public class NbrgPdfViewerFlutterPlugin implements FlutterPlugin, ActivityAware,
 
     private void openPDF(MethodCall call, MethodChannel.Result result) {
         String path = call.argument("path");
-        if (nbrgPdfViewerFlutterManager == null || nbrgPdfViewerFlutterManager.closed) {
-            nbrgPdfViewerFlutterManager = new NbrgPdfViewerFlutterManager(activity);
+        if (FlutterPdfViewerManager == null || FlutterPdfViewerManager.closed) {
+            FlutterPdfViewerManager = new FlutterPdfViewerManager(activity);
         }
         FrameLayout.LayoutParams params = buildLayoutParams(call);
-        activity.addContentView(nbrgPdfViewerFlutterManager.pdfView, params);
+        activity.addContentView(FlutterPdfViewerManager.pdfView, params);
         ViewerParams viewerParams = ViewerParams.fromCall(call);
-        nbrgPdfViewerFlutterManager.openPDF(path, viewerParams);
+        FlutterPdfViewerManager.openPDF(path, viewerParams);
         result.success(null);
     }
 
     private void resize(MethodCall call, final MethodChannel.Result result) {
-        if (nbrgPdfViewerFlutterManager != null) {
+        if (FlutterPdfViewerManager != null) {
             FrameLayout.LayoutParams params = buildLayoutParams(call);
-            nbrgPdfViewerFlutterManager.resize(params);
+            FlutterPdfViewerManager.resize(params);
         }
         result.success(null);
     }
 
     private void close(MethodCall call, MethodChannel.Result result) {
-        if (nbrgPdfViewerFlutterManager != null) {
-            nbrgPdfViewerFlutterManager.close(call, result);
-            nbrgPdfViewerFlutterManager = null;
+        if (FlutterPdfViewerManager != null) {
+            FlutterPdfViewerManager.close(call, result);
+            FlutterPdfViewerManager = null;
         }
     }
 
@@ -106,7 +106,7 @@ public class NbrgPdfViewerFlutterPlugin implements FlutterPlugin, ActivityAware,
 
     @Override
     public boolean onActivityResult(int i, int i1, Intent intent) {
-        return nbrgPdfViewerFlutterManager != null;
+        return FlutterPdfViewerManager != null;
     }
 
     @Override
@@ -139,7 +139,7 @@ public class NbrgPdfViewerFlutterPlugin implements FlutterPlugin, ActivityAware,
     @Override
     public void onDetachedFromActivity() {
         activity = null;
-        nbrgPdfViewerFlutterManager.close();
+        FlutterPdfViewerManager.close();
 //        deregisterFromActivity();
     }
 }

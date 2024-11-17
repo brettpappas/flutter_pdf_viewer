@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:nbrg_pdf_viewer_flutter/nbrg_pdf_viewer_flutter_plugin.dart';
-import 'package:nbrg_pdf_viewer_flutter/viewer_params.dart';
+import 'package:flutter_pdf_viewer/flutter_pdf_viewer_plugin.dart';
+import 'package:flutter_pdf_viewer/viewer_params.dart';
 
 class PDFViewerScaffold extends StatefulWidget {
   final PreferredSizeWidget appBar;
@@ -23,7 +23,7 @@ class PDFViewerScaffold extends StatefulWidget {
 }
 
 class _PDFViewScaffoldState extends State<PDFViewerScaffold> {
-  final pdfViewerRef = new NbrgPdfViewerFlutterPlugin();
+  final pdfViewerRef = new FlutterPdfViewerPlugin();
   Rect? _rect;
   Timer? _resizeTimer;
 
@@ -59,9 +59,7 @@ class _PDFViewScaffoldState extends State<PDFViewerScaffold> {
         });
       }
     }
-    return new Scaffold(
-        appBar: widget.appBar,
-        body: const Center(child: const CircularProgressIndicator()));
+    return new Scaffold(appBar: widget.appBar, body: const Center(child: const CircularProgressIndicator()));
   }
 
   Rect _buildRect(BuildContext context) {

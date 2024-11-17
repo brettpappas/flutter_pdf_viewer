@@ -1,9 +1,9 @@
 #
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html.
-# Run `pod lib lint nbrg_pdf_viewer_flutter.podspec` to validate before publishing.
+# Run `pod lib lint flutter_pdf_viewer.podspec` to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'nbrg_pdf_viewer_flutter'
+  s.name             = 'flutter_pdf_viewer'
   s.version          = '0.0.1'
   s.summary          = 'A new flutter plugin project.'
   s.description      = <<-DESC

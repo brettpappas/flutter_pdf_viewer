@@ -1,12 +1,12 @@
 @import UIKit;
 @import WebKit;
 
-#import "NbrgPdfViewerFlutterPlugin.h"
+#import "FlutterPdfViewerPlugin.h"
 
-@interface NbrgPdfViewerFlutterPlugin ()
+@interface FlutterPdfViewerPlugin ()
 @end
 
-@implementation NbrgPdfViewerFlutterPlugin{
+@implementation FlutterPdfViewerPlugin{
     FlutterResult _result;
     UIViewController *_viewController;
     WKWebView *_webView;
@@ -14,13 +14,13 @@
 
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
     FlutterMethodChannel* channel = [FlutterMethodChannel
-                                     methodChannelWithName:@"nbrg_pdf_viewer_flutter"
+                                     methodChannelWithName:@"flutter_pdf_viewer"
                                      binaryMessenger:[registrar messenger]];
-    
+
     UIViewController *viewController = [UIApplication sharedApplication].delegate.window.rootViewController;
-    
-    NbrgPdfViewerFlutterPlugin *instance = [[NbrgPdfViewerFlutterPlugin alloc] initWithViewController:viewController];
-    
+
+    FlutterPdfViewerPlugin *instance = [[FlutterPdfViewerPlugin alloc] initWithViewController:viewController];
+
     [registrar addMethodCallDelegate:instance channel:channel];
 }
 
@@ -46,18 +46,18 @@
                                     details:nil]);
         _result = nil;
     }
-    
-    
+
+
     if ([@"launch" isEqualToString:call.method]) {
-        
+
         NSDictionary *rect = call.arguments[@"rect"];
         NSString *path = call.arguments[@"path"];
-        
+
         CGRect rc = [self parseRect:rect];
-        
+
         if (_webView == nil){
             _webView = [[WKWebView alloc] initWithFrame:rc];
-            
+
             NSURL *targetURL = [NSURL fileURLWithPath:path];
 
             if (@available(iOS 9.0, *)) {
@@ -69,10 +69,10 @@
                 [_webView loadRequest:request];
             }
 
-            
+
             [_viewController.view addSubview:_webView];
         }
-        
+
     } else if ([@"resize" isEqualToString:call.method]) {
         if (_webView != nil) {
             NSDictionary *rect = call.arguments[@"rect"];
@@ -96,12 +96,12 @@
     }
 }
 
-// @implementation NbrgPdfViewerFlutterPlugin
+// @implementation FlutterPdfViewerPlugin
 // + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
 //   FlutterMethodChannel* channel = [FlutterMethodChannel
-//       methodChannelWithName:@"nbrg_pdf_viewer_flutter"
+//       methodChannelWithName:@"flutter_pdf_viewer"
 //             binaryMessenger:[registrar messenger]];
-//   NbrgPdfViewerFlutterPlugin* instance = [[NbrgPdfViewerFlutterPlugin alloc] init];
+//   FlutterPdfViewerPlugin* instance = [[FlutterPdfViewerPlugin alloc] init];
 //   [registrar addMethodCallDelegate:instance channel:channel];
 // }
 

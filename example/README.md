@@ -1,6 +1,6 @@
-# nbrg_pdf_viewer_flutter_example
+# flutter_pdf_viewer_example
 
-Demonstrates how to use the nbrg_pdf_viewer_flutter plugin.
+Demonstrates how to use the flutter_pdf_viewer plugin.
 
 ## Getting Started
 

@@ -14,7 +14,7 @@ Add this to your package's pubspec.yaml file:
 
 ```dart
 dependencies:
-  nbrg_pdf_viewer_flutter: ^2.0.0-nullsafety.2
+  flutter_pdf_viewer: ^2.0.0-nullsafety.2
 ```
 
 ### 2. Install it
@@ -34,9 +34,9 @@ Alternatively, your editor might support pub get or ```flutter packages get```. 
 Now in your Dart code, you can use:
 
 ```dart
-import 'package:nbrg_pdf_viewer_flutter/nbrg_pdf_viewer_flutter.dart';
-import 'package:nbrg_pdf_viewer_flutter/nbrg_pdf_viewer_flutter_plugin.dart';
-import 'package:nbrg_pdf_viewer_flutter/nbrg_pdf_viewer_flutter_scaffold.dart';
+import 'package:flutter_pdf_viewer/flutter_pdf_viewer.dart';
+import 'package:flutter_pdf_viewer/flutter_pdf_viewer_plugin.dart';
+import 'package:flutter_pdf_viewer/flutter_pdf_viewer_scaffold.dart';
 ```
 
 ### 4. Informations for Release on Android

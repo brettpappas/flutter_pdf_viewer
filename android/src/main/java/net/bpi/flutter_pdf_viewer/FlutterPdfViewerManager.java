@@ -1,27 +1,27 @@
 
-package dev.nbrg.nbrg_pdf_viewer_flutter;
+package net.bpi.flutter_pdf_viewer;
 
 import android.app.Activity;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.github.barteksc.pdfviewer.PDFView;
-
+// import com.github.barteksc.pdfviewer.PDFView;
+import com.github.mhiew.pdfviewer.PDFView;
 import java.io.File;
 
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 
 /**
- * NbrgPdfViewerFlutterManager
+ * FlutterPdfViewerManager
  */
-class NbrgPdfViewerFlutterManager {
+class FlutterPdfViewerManager {
 
     boolean closed = false;
     PDFView pdfView;
     Activity activity;
 
-    NbrgPdfViewerFlutterManager (final Activity activity) {
+    FlutterPdfViewerManager (final Activity activity) {
         this.pdfView = new PDFView(activity, null);
         this.activity = activity;
     }
@@ -73,7 +73,7 @@ class NbrgPdfViewerFlutterManager {
         }
 
         closed = true;
-        NbrgPdfViewerFlutterPlugin.channel.invokeMethod("onDestroy", null);
+        FlutterPdfViewerPlugin.channel.invokeMethod("onDestroy", null);
     }
 
     void close() {

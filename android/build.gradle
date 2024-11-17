@@ -1,4 +1,4 @@
-group 'dev.nbrg.nbrg_pdf_viewer_flutter'
+group 'net.bpi.flutter_pdf_viewer'
 version '2.0.0'
 
 buildscript {
@@ -22,7 +22,7 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    namespace 'dev.nbrg.nbrg_pdf_viewer_flutter'
+    namespace 'net.bpi.flutter_pdf_viewer'
     compileSdkVersion 32
 
     defaultConfig {
@@ -48,5 +48,4 @@ subprojects {
 dependencies {
     // implementation 'com.github.barteksc:android-pdf-viewer:3.1.0-beta.1'
     implementation 'com.github.mhiew:android-pdf-viewer:3.2.0-beta.1'
-    // implementation files('D:/SDKs/flutter/bin/cache/artifacts/engine/android-arm/flutter.jar')
 }

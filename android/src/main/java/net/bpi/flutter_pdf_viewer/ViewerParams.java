@@ -1,4 +1,4 @@
-package dev.nbrg.nbrg_pdf_viewer_flutter;
+package net.bpi.flutter_pdf_viewer;
 
 import io.flutter.plugin.common.MethodCall;
 

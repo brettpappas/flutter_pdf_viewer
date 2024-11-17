@@ -1,17 +1,16 @@
 import 'dart:async';
 import 'package:flutter/services.dart';
-import 'package:nbrg_pdf_viewer_flutter/viewer_params.dart';
+import 'package:flutter_pdf_viewer/viewer_params.dart';
 
 enum PDFViewState { shouldStart, startLoad, finishLoad }
 
-class NbrgPdfViewerFlutterPlugin {
-  final _channel = const MethodChannel("nbrg_pdf_viewer_flutter");
-  static NbrgPdfViewerFlutterPlugin? _instance;
+class FlutterPdfViewerPlugin {
+  final _channel = const MethodChannel("flutter_pdf_viewer");
+  static FlutterPdfViewerPlugin? _instance;
 
-  factory NbrgPdfViewerFlutterPlugin() =>
-      _instance ??= new NbrgPdfViewerFlutterPlugin._();
+  factory FlutterPdfViewerPlugin() => _instance ??= new FlutterPdfViewerPlugin._();
 
-  NbrgPdfViewerFlutterPlugin._() {
+  FlutterPdfViewerPlugin._() {
     _channel.setMethodCallHandler(_handleMessages);
   }
 
@@ -41,12 +40,7 @@ class NbrgPdfViewerFlutterPlugin {
   Future<Null> launch(String path, ViewerParams params, {Rect? rect}) async {
     final basicArgs = <String, dynamic>{'path': path};
     if (rect != null) {
-      basicArgs['rect'] = {
-        'left': rect.left,
-        'top': rect.top,
-        'width': rect.width,
-        'height': rect.height
-      };
+      basicArgs['rect'] = {'left': rect.left, 'top': rect.top, 'width': rect.width, 'height': rect.height};
     }
     final Map<String, dynamic> args = params.toMap(basicArgs);
     await _channel.invokeMethod('launch', args);
@@ -58,13 +52,11 @@ class NbrgPdfViewerFlutterPlugin {
 
   /// adds the plugin as ActivityResultListener
   /// Only needed and used on Android
-  Future registerAcitivityResultListener() =>
-      _channel.invokeMethod('registerAcitivityResultListener');
+  Future registerAcitivityResultListener() => _channel.invokeMethod('registerAcitivityResultListener');
 
   /// removes the plugin as ActivityResultListener
   /// Only needed and used on Android
-  Future removeAcitivityResultListener() =>
-      _channel.invokeMethod('removeAcitivityResultListener');
+  Future removeAcitivityResultListener() => _channel.invokeMethod('removeAcitivityResultListener');
 
   /// Close all Streams
   void dispose() {
@@ -75,12 +67,7 @@ class NbrgPdfViewerFlutterPlugin {
   /// resize PDFViewer
   Future<Null> resize(Rect rect) async {
     final args = {};
-    args['rect'] = {
-      'left': rect.left,
-      'top': rect.top,
-      'width': rect.width,
-      'height': rect.height
-    };
+    args['rect'] = {'left': rect.left, 'top': rect.top, 'width': rect.width, 'height': rect.height};
     await _channel.invokeMethod('resize', args);
   }
 }
