@@ -1,6 +1,6 @@
 name: flutter_pdf_viewer
 description: A flutter plugin to display PDFs. This works for Android and for iOS(Reduced Functionality).
-version: 2.1.2
+version: 2.2.0
 homepage: https://github.com/brettpappas/flutter_pdf_viewer
 
 environment:
