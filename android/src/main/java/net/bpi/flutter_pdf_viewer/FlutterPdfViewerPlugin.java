@@ -139,7 +139,9 @@ public class FlutterPdfViewerPlugin implements FlutterPlugin, ActivityAware, Plu
     @Override
     public void onDetachedFromActivity() {
         activity = null;
-        FlutterPdfViewerManager.close();
-//        deregisterFromActivity();
+
+        if (FlutterPdfViewerManager != null) {
+            FlutterPdfViewerManager.close();
+        }
     }
 }
